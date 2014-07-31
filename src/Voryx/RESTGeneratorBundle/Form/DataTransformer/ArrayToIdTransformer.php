@@ -56,6 +56,14 @@ class ArrayToIdTransformer implements DataTransformerInterface
             return $data['id'];
         }
 
+        if (is_array($data) and isset($data[0]['id'])) {
+            $aId = array();
+            foreach ($data as $obj) {
+                array_push($aId, $obj['id']);
+            }
+            return $aId;
+        }
+
         return null;
 
     }
